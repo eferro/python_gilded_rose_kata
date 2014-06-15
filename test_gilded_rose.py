@@ -52,6 +52,17 @@ class GildedRoseTest(unittest.TestCase):
         # self._assert_quality_and_sell_in(items[0], sell_in=-1, quality=0)
         self._assert_quality_and_sell_in(items[1], sell_in=-1, quality=0)
 
+    def test_decreases_the_quality_of_the_rpoducts_twice_as_fast_when_we_have_passed_the_sell_in_date(self):
+        items = [
+                Item("+5 Dexterity Vest", 0, 20),
+                Item("Conjured Mana Cake", 0, 6)
+        ]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+
+        self._assert_quality_and_sell_in(items[0], sell_in=-1, quality=18)
+        self._assert_quality_and_sell_in(items[1], sell_in=-1, quality=4)
+
     def test_does_not_alter_quality_of_sulfuras_witch_is_allways_80(self):
         items = [ Item("Sulfuras, Hand of Ragnaros", 0, 80), ]
         gilded_rose = GildedRose(items)
