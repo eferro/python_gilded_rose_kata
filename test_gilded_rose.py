@@ -39,6 +39,12 @@ class GildedRoseTest(unittest.TestCase):
     #    	self._assert_quality_and_sell_in(items[0], sell_in=9, quality=36)
     #    	self._assert_quality_and_sell_in(items[1], sell_in=7, quality=32)
 
+	def test_does_not_alter_quality_of_sulfuras_witch_is_allways_80(self):
+		items = [ Item("Sulfuras, Hand of Ragnaros", 0, 80), ]
+		gilded_rose = GildedRose(items)
+		gilded_rose.update_quality()
+
+		self._assert_quality_and_sell_in(items[0], sell_in=0, quality=80)
 
 	def test_does_not_increase_quality_over_50(self):
 		items = [ Item("Aged Brie", 4, 49), ]
