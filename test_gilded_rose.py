@@ -63,6 +63,18 @@ class GildedRoseTest(unittest.TestCase):
         self._assert_quality_and_sell_in(items[0], sell_in=-1, quality=18)
         self._assert_quality_and_sell_in(items[1], sell_in=-1, quality=4)
 
+    def test_increases_the_quality_by_three_of_the_products_that_get_better_as_they_age_when_there_are_5_days_or_less_left(self):
+        items = [
+                Item("Aged Brie", 4, 11),
+                Item("Backstage passes to a TAFKAL80ETC concert", 5, 15)
+        ]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+
+        # FIXME Possible BUG
+        #self._assert_quality_and_sell_in(items[0], sell_in=3, quality=14)
+        self._assert_quality_and_sell_in(items[1], sell_in=4, quality=18)
+
     def test_does_not_alter_quality_of_sulfuras_witch_is_allways_80(self):
         items = [ Item("Sulfuras, Hand of Ragnaros", 0, 80), ]
         gilded_rose = GildedRose(items)
