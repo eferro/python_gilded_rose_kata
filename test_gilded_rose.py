@@ -12,10 +12,15 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
 
-        self.assertEquals(9, items[0].sell_in)
-        self.assertEquals(19, items[0].quality)
-        self.assertEquals(2, items[1].sell_in)
-        self.assertEquals(5, items[1].quality)
+       	self._assert_quality_and_sell_in(items[0], sell_in=9, quality=19)
+       	self._assert_quality_and_sell_in(items[1], sell_in=2, quality=5)
+
+    def _assert_quality_and_sell_in(self, item, sell_in, quality):
+    	self.assertEquals(sell_in, item.sell_in)
+        self.assertEquals(quality, item.quality)
+        
+
+
 
 if __name__ == '__main__':
     unittest.main()
