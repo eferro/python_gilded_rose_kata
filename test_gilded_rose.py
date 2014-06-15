@@ -41,16 +41,12 @@ class GildedRoseTest(unittest.TestCase):
         self._assert_quality_and_sell_in(items[1], sell_in=7, quality=32)
 
     def test_quality_zero_for_backstage_passes_and_brie_when_we_have_passed_the_sell_in_date(self):
-        items = [
-                Item("Aged Brie", 0, 20),
-                Item("Backstage passes to a TAFKAL80ETC concert", 0, 20)
-        ]
-        gilded_rose = GildedRose(items)
+        item = Item("Backstage passes to a TAFKAL80ETC concert", 0, 20)
+
+        gilded_rose = GildedRose([item])
         gilded_rose.update_quality()
 
-		# FIXME Possible BUG
-        # self._assert_quality_and_sell_in(items[0], sell_in=-1, quality=0)
-        self._assert_quality_and_sell_in(items[1], sell_in=-1, quality=0)
+        self._assert_quality_and_sell_in(item, sell_in=-1, quality=0)
 
     def test_decreases_the_quality_of_the_rpoducts_twice_as_fast_when_we_have_passed_the_sell_in_date(self):
         items = [
