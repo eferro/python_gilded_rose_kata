@@ -24,3 +24,5 @@ Feel free to make any changes to the UpdateQuality method and add any new code a
 
 
 - See more at: http://craftsmanship.sv.cmu.edu/exercises/gilded-rose-kata#sthash.9BBtAqoy.dpuf
+
+- Initial code from https://github.com/emilybache/GildedRose-Refactoring-Kata
